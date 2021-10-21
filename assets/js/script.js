@@ -168,16 +168,11 @@ $(".list-group").on("change", "input[type='text']", function(){
   tasks[status][index].date = date;
   saveTasks();
 
-  //recreate span element with bootstrap classes
-  var taskSpan = $("<span>")
-  .addClass("badge badge-primary badge-pill")
-  .text(date);
+  var taskSpan = $("<span>").addClass("badge badge-primary badge-pill").text(date);
+  $(this).replaceWith(taskSpan);
 
   // Pass task's <li> element into auditTask() to check new due date
   auditTask($(taskSpan).closest(".list-group-item"));
-
-  //replace input with span element
-  $(this).replaceWith(taskSpan);
 });
 
 // modal was triggered
